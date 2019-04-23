@@ -23,13 +23,15 @@ export const TAB_ACTIVE_BACKGROUND = registerColor('tab.activeBackground', {
 	dark: editorBackground,
 	light: editorBackground,
 	hc: editorBackground
-}, nls.localize('tabActiveBackground', "Active tab background color. Tabs are the containers for editors in the editor area. Multiple tabs can be opened in one editor group. There can be multiple editor groups."));
+}, nls.localize('tabActiveBackground', "Active tab background color. Tabs are the containers for editors in the editor area. Multiple tabs can be opened in one editor group. There can be multiple editor groups."),
+true  /* add opacity id */);
 
 export const TAB_INACTIVE_BACKGROUND = registerColor('tab.inactiveBackground', {
 	dark: '#2D2D2D',
 	light: '#ECECEC',
 	hc: null
-}, nls.localize('tabInactiveBackground', "Inactive tab background color. Tabs are the containers for editors in the editor area. Multiple tabs can be opened in one editor group. There can be multiple editor groups."));
+}, nls.localize('tabInactiveBackground', "Inactive tab background color. Tabs are the containers for editors in the editor area. Multiple tabs can be opened in one editor group. There can be multiple editor groups."),
+true /* add opacity id */);
 
 export const TAB_HOVER_BACKGROUND = registerColor('tab.hoverBackground', {
 	dark: null,
@@ -152,7 +154,8 @@ export const EDITOR_GROUP_EMPTY_BACKGROUND = registerColor('editorGroup.emptyBac
 	dark: null,
 	light: null,
 	hc: null
-}, nls.localize('editorGroupEmptyBackground', "Background color of an empty editor group. Editor groups are the containers of editors."));
+}, nls.localize('editorGroupEmptyBackground', "Background color of an empty editor group. Editor groups are the containers of editors."),
+true /* add opacity id */);
 
 export const EDITOR_GROUP_FOCUSED_EMPTY_BORDER = registerColor('editorGroup.focusedEmptyBorder', {
 	dark: null,
@@ -164,7 +167,8 @@ export const EDITOR_GROUP_HEADER_TABS_BACKGROUND = registerColor('editorGroupHea
 	dark: '#252526',
 	light: '#F3F3F3',
 	hc: null
-}, nls.localize('tabsContainerBackground', "Background color of the editor group title header when tabs are enabled. Editor groups are the containers of editors."));
+}, nls.localize('tabsContainerBackground', "Background color of the editor group title header when tabs are enabled. Editor groups are the containers of editors."),
+true /* add opacity id */);
 
 export const EDITOR_GROUP_HEADER_TABS_BORDER = registerColor('editorGroupHeader.tabsBorder', {
 	dark: null,
@@ -198,7 +202,8 @@ export const PANEL_BACKGROUND = registerColor('panel.background', {
 	dark: editorBackground,
 	light: editorBackground,
 	hc: editorBackground
-}, nls.localize('panelBackground', "Panel background color. Panels are shown below the editor area and contain views like output and integrated terminal."));
+}, nls.localize('panelBackground', "Panel background color. Panels are shown below the editor area and contain views like output and integrated terminal.")
+, true /* add opacity id */);
 
 export const PANEL_BORDER = registerColor('panel.border', {
 	dark: Color.fromHex('#808080').transparent(0.35),
@@ -311,7 +316,8 @@ export const ACTIVITY_BAR_BACKGROUND = registerColor('activityBar.background', {
 	dark: '#333333',
 	light: '#2C2C2C',
 	hc: '#000000'
-}, nls.localize('activityBarBackground', "Activity bar background color. The activity bar is showing on the far left or right and allows to switch between views of the side bar."));
+}, nls.localize('activityBarBackground', "Activity bar background color. The activity bar is showing on the far left or right and allows to switch between views of the side bar."),
+true /* add opacity id */);
 
 export const ACTIVITY_BAR_FOREGROUND = registerColor('activityBar.foreground', {
 	dark: Color.white,
@@ -356,7 +362,8 @@ export const SIDE_BAR_BACKGROUND = registerColor('sideBar.background', {
 	dark: '#252526',
 	light: '#F3F3F3',
 	hc: '#000000'
-}, nls.localize('sideBarBackground', "Side bar background color. The side bar is the container for views like explorer and search."));
+}, nls.localize('sideBarBackground', "Side bar background color. The side bar is the container for views like explorer and search."),
+true /* add opacity id */);
 
 export const SIDE_BAR_FOREGROUND = registerColor('sideBar.foreground', {
 	dark: null,

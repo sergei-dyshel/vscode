@@ -18,7 +18,8 @@ export const TERMINAL_BACKGROUND_COLOR = registerColor('terminal.background', {
 	dark: PANEL_BACKGROUND,
 	light: PANEL_BACKGROUND,
 	hc: PANEL_BACKGROUND
-}, nls.localize('terminal.background', 'The background color of the terminal, this allows coloring the terminal differently to the panel.'));
+}, nls.localize('terminal.background', 'The background color of the terminal, this allows coloring the terminal differently to the panel.'),
+true /* add opacity id */);
 export const TERMINAL_FOREGROUND_COLOR = registerColor('terminal.foreground', {
 	light: '#333333',
 	dark: '#CCCCCC',

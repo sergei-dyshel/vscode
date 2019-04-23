@@ -167,7 +167,11 @@ const colorRegistry = new ColorRegistry();
 platform.Registry.add(Extensions.ColorContribution, colorRegistry);
 
 export function registerColor(id: string, defaults: ColorDefaults | null, description: string, needsTransparency?: boolean, deprecationMessage?: string): ColorIdentifier {
-	return colorRegistry.registerColor(id, defaults, description, needsTransparency, deprecationMessage);
+	const colorId = colorRegistry.registerColor(id, defaults, description, needsTransparency, deprecationMessage);
+	if (needsTransparency) {
+		colorRegistry.registerColor(id + '.opacity', { light: '#000f', dark: '#000f', hc: '#000f'}, 'Opacity level for ' + id);
+	}
+	return colorId;
 }
 
 export function getColorRegistry(): IColorRegistry {
@@ -269,7 +273,7 @@ export const menuSeparatorBackground = registerColor('menu.separatorBackground',
  * Because of bug https://monacotools.visualstudio.com/DefaultCollection/Monaco/_workitems/edit/13254
  * we are *not* using the color white (or #ffffff, rgba(255,255,255)) but something very close to white.
  */
-export const editorBackground = registerColor('editor.background', { light: '#fffffe', dark: '#1E1E1E', hc: Color.black }, nls.localize('editorBackground', "Editor background color."));
+export const editorBackground = registerColor('editor.background', { light: '#fffffe', dark: '#1E1E1E', hc: Color.black }, nls.localize('editorBackground', "Editor background color."), true /* opacity */);
 
 /**
  * Editor foreground color.

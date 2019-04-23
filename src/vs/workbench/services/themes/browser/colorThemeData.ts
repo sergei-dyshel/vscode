@@ -74,6 +74,13 @@ export class ColorThemeData implements IColorTheme {
 		if (useDefault !== false && types.isUndefined(color)) {
 			color = this.getDefault(colorId);
 		}
+		const opacityColorId = colorId + '.opacity';
+		if (color && (this.customColorMap.hasOwnProperty(opacityColorId) || this.colorMap.hasOwnProperty(opacityColorId))) {
+			const opacityColor = this.getColor(opacityColorId, false /* do not use default */);
+			if (opacityColor) {
+				return Color.addOpacity(color, opacityColor);
+			}
+		}
 		return color;
 	}
 

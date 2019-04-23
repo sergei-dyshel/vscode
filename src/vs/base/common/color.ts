@@ -277,6 +277,11 @@ export class Color {
 		return HSVA.fromRGBA(this.rgba);
 	}
 
+	static addOpacity(color: Color, opacityColor: Color): Color {
+		const rgba = color.rgba;
+		return new Color(new RGBA(rgba.r, rgba.g, rgba.b, opacityColor.rgba.a));
+	}
+
 	constructor(arg: RGBA | HSLA | HSVA) {
 		if (!arg) {
 			throw new Error('Color needs a value');
