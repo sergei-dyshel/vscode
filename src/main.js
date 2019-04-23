@@ -162,6 +162,18 @@ function configureCommandlineSwitches(cliArgs, nodeCachedDataDir) {
 	if (jsFlags) {
 		app.commandLine.appendSwitch('--js-flags', jsFlags);
 	}
+
+	// Linux: disable hardware acceleration when transparent window is enabled
+	if (process.platform === 'linux') {
+		const configFile = path.join(app.getPath('userData'), 'User', 'settings.json');
+		bootstrap.readFile(configFile).then(content => {
+			const config = JSON.parse(stripComments(content));
+			if (config['window.transparent']) {
+				app.commandLine.appendSwitch('enable-transparent-visuals');
+				app.disableHardwareAcceleration();
+			}
+		});
+	}
 }
 
 /**

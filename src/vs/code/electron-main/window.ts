@@ -5,6 +5,7 @@
 
 import * as path from 'vs/base/common/path';
 import * as objects from 'vs/base/common/objects';
+import * as os from 'os';
 import * as nls from 'vs/nls';
 import { URI } from 'vs/base/common/uri';
 import { IStateService } from 'vs/platform/state/common/state';
@@ -23,7 +24,7 @@ import { IBackupMainService } from 'vs/platform/backup/common/backup';
 import { ISerializableCommandAction } from 'vs/platform/actions/common/actions';
 import * as perf from 'vs/base/common/performance';
 import { resolveMarketplaceHeaders } from 'vs/platform/extensionManagement/node/extensionGalleryService';
-import { getBackgroundColor } from 'vs/code/electron-main/theme';
+import { getBackgroundColor, setBackgroundColor } from 'vs/code/electron-main/theme';
 import { RunOnceScheduler } from 'vs/base/common/async';
 import { withNullAsUndefined } from 'vs/base/common/types';
 
@@ -115,6 +116,11 @@ export class CodeWindow extends Disposable implements ICodeWindow {
 		this.registerListeners();
 	}
 
+	private setTransparentInfo(options: Electron.BrowserWindowConstructorOptions): void {
+		options.backgroundColor = '#00000000';
+		setBackgroundColor(this.stateService, 'transparent');
+	}
+
 	private createBrowserWindow(config: IWindowCreationOptions): void {
 
 		// Load window state
@@ -146,11 +152,17 @@ export class CodeWindow extends Disposable implements ICodeWindow {
 			options.webPreferences!.nodeIntegration = false; // simulate Electron 5 behaviour
 		}
 
+		const windowConfig = this.configurationService.getValue<IWindowSettings>('window');
+
 		if (isLinux) {
 			options.icon = path.join(this.environmentService.appRoot, 'resources/linux/code.png'); // Windows and Mac are better off using the embedded icon(s)
-		}
 
-		const windowConfig = this.configurationService.getValue<IWindowSettings>('window');
+			// Make sure hardware acceleration is actually disabled.
+			options.transparent = windowConfig && windowConfig.transparent && app.getGPUFeatureStatus().gpu_compositing !== 'enabled';
+			if (options.transparent) {
+				this.setTransparentInfo(options);
+			}
+		}
 
 		if (isMacintosh && !this.useNativeFullScreen()) {
 			options.fullscreenable = false; // enables simple fullscreen mode
@@ -177,12 +189,48 @@ export class CodeWindow extends Disposable implements ICodeWindow {
 			}
 		}
 
+		if (isMacintosh && windowConfig && windowConfig.vibrancy && windowConfig.vibrancy !== 'none') {
+			this.setTransparentInfo(options);
+			options.vibrancy = windowConfig.vibrancy;
+		}
+
+		const needsWinTransparency =
+			isWindows && windowConfig && windowConfig.compositionAttribute &&
+			windowConfig.compositionAttribute !== 'none' && parseFloat(os.release()) >= 10 &&
+			useCustomTitleStyle;
+		if (needsWinTransparency) {
+			this.setTransparentInfo(options);
+		}
+
 		// Create the browser window.
 		this._win = new BrowserWindow(options);
 		this._id = this._win.id;
 
 		if (isMacintosh && useCustomTitleStyle) {
 			this._win.setSheetOffset(22); // offset dialogs by the height of the custom title bar if we have any
+		}
+
+		if (needsWinTransparency) {
+			const { ACCENT_STATE, SetWindowCompositionAttribute } = require.__$__nodeRequire('windows-swca');
+			let attribValue = ACCENT_STATE.ACCENT_DISABLED;
+			switch (windowConfig.compositionAttribute) {
+				case 'acrylic':
+					// Fluent/acrylic flag was introduced in Windows 10 build 17063 (between FCU and April 2018 update)
+					if (parseInt(os.release().split('.')[2]) >= 17063) {
+						attribValue = ACCENT_STATE.ACCENT_ENABLE_ACRYLICBLURBEHIND;
+					}
+					break;
+
+				case 'blur':
+					attribValue = ACCENT_STATE.ACCENT_ENABLE_BLURBEHIND;
+					break;
+
+				case 'transparent':
+					attribValue = ACCENT_STATE.ACCENT_ENABLE_TRANSPARENTGRADIENT;
+					break;
+			}
+
+			SetWindowCompositionAttribute(this._win.getNativeWindowHandle(), attribValue, 0);
 		}
 
 		if (isFullscreenOrMaximized) {

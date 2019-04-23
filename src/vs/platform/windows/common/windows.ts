@@ -257,6 +257,9 @@ export interface IWindowSettings {
 	enableMenuBarMnemonics: boolean;
 	closeWhenEmpty: boolean;
 	clickThroughInactive: boolean;
+	transparent: boolean;
+	compositionAttribute: 'none' | 'transparent' | 'blur' | 'acrylic';
+	vibrancy: 'none' | 'appearance-based' | 'light' | 'dark' | 'titlebar' | 'medium-light' | 'ultra-dark';
 }
 
 export function getTitleBarStyle(configurationService: IConfigurationService, environment: IEnvironmentService, isExtensionDevelopment = environment.isExtensionDevelopment): 'native' | 'custom' {
