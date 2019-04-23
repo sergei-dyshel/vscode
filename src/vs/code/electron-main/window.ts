@@ -158,7 +158,7 @@ export class CodeWindow extends Disposable implements ICodeWindow {
 			options.icon = path.join(this.environmentService.appRoot, 'resources/linux/code.png'); // Windows and Mac are better off using the embedded icon(s)
 
 			// Make sure hardware acceleration is actually disabled.
-			options.transparent = windowConfig && windowConfig.transparent && app.getGPUFeatureStatus().gpu_compositing !== 'enabled';
+			options.transparent = windowConfig && windowConfig.transparent;
 			if (options.transparent) {
 				this.setTransparentInfo(options);
 			}

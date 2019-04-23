@@ -170,7 +170,6 @@ function configureCommandlineSwitches(cliArgs, nodeCachedDataDir) {
 			const config = JSON.parse(stripComments(content));
 			if (config['window.transparent']) {
 				app.commandLine.appendSwitch('enable-transparent-visuals');
-				app.disableHardwareAcceleration();
 			}
 		});
 	}
