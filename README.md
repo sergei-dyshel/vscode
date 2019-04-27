@@ -1,3 +1,7 @@
+# Fork
+
+This is my personal fork. See documentation for changes in [README.fork.md](README.fork.md).
+
 # Visual Studio Code - Open Source
 
 <!-- [![Build Status](https://dev.azure.com/vscode/VSCode/_apis/build/status/VS%20Code?branchName=master)](https://aka.ms/vscode-builds) -->
