@@ -1,3 +1,6 @@
+undo_telemetry.sh
+update_settings.sh
+
 .DS_Store
 .cache
 npm-debug.log
