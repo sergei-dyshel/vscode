@@ -30,3 +30,5 @@ coverage/
 test_data/
 test-results/
 yarn-error.log
+undo_telemetry.sh
+update_settings.sh
