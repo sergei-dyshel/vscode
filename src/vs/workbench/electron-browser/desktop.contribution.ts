@@ -326,7 +326,7 @@ import product from 'vs/platform/product/common/product';
 			'telemetry.enableCrashReporter': {
 				'type': 'boolean',
 				'description': nls.localize('telemetry.enableCrashReporting', "Enable crash reports to be sent to a Microsoft online service. \nThis option requires restart to take effect."),
-				'default': true,
+				'default': false,
 				'tags': ['usesOnlineServices']
 			}
 		}
