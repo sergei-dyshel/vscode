@@ -34,3 +34,5 @@ test-results/
 yarn-error.log
 vscode.lsif
 vscode.db
+undo_telemetry.sh
+update_settings.sh
