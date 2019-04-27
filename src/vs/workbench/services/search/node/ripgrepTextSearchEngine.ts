@@ -430,7 +430,6 @@ function getRgArgs(query: vscode.TextSearchQuery, options: vscode.TextSearchOpti
 		args.push('--fixed-strings');
 	}
 
-	args.push('--no-config');
 	if (!options.useGlobalIgnoreFiles) {
 		args.push('--no-ignore-global');
 	}
