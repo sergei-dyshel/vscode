@@ -293,7 +293,7 @@ import { IJSONSchema } from 'vs/base/common/jsonSchema';
 			'telemetry.enableCrashReporter': {
 				'type': 'boolean',
 				'description': localize('telemetry.enableCrashReporting', "Enable crash reports to be sent to a Microsoft online service. \nThis option requires restart to take effect."),
-				'default': true,
+				'default': false,
 				'tags': ['usesOnlineServices']
 			}
 		}
