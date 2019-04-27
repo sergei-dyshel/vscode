@@ -460,7 +460,6 @@ export function getRgArgs(query: TextSearchQuery, options: TextSearchOptions): s
 		args.push('--fixed-strings');
 	}
 
-	args.push('--no-config');
 	if (!options.useGlobalIgnoreFiles) {
 		args.push('--no-ignore-global');
 	}
