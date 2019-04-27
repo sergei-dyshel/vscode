@@ -496,7 +496,6 @@ export function getRgArgs(query: TextSearchQuery2, options: RipgrepTextSearchOpt
 		args.push('--fixed-strings');
 	}
 
-	args.push('--no-config');
 	if (!options.folderOptions.useIgnoreFiles.global) {
 		args.push('--no-ignore-global');
 	}
