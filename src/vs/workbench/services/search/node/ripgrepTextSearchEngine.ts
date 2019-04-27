@@ -471,7 +471,6 @@ function getRgArgs(query: TextSearchQuery, options: TextSearchOptions): string[]
 		args.push('--fixed-strings');
 	}
 
-	args.push('--no-config');
 	if (!options.useGlobalIgnoreFiles) {
 		args.push('--no-ignore-global');
 	}
