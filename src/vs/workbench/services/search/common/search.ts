@@ -9,7 +9,8 @@ import * as glob from 'vs/base/common/glob';
 import { IDisposable } from 'vs/base/common/lifecycle';
 import * as objects from 'vs/base/common/objects';
 import * as extpath from 'vs/base/common/extpath';
-import { fuzzyContains, getNLines } from 'vs/base/common/strings';
+import { getNLines } from 'vs/base/common/strings';
+import { abbrevContains } from 'vs/base/common/abbrev';
 import { URI, UriComponents } from 'vs/base/common/uri';
 import { IFilesConfiguration } from 'vs/platform/files/common/files';
 import { createDecorator } from 'vs/platform/instantiation/common/instantiation';
@@ -595,7 +596,7 @@ export function isSerializedFileMatch(arg: ISerializedSearchProgressItem): arg i
 export function isFilePatternMatch(candidate: IRawFileMatch, filePatternToUse: string, fuzzy = true): boolean {
 	const pathToMatch = candidate.searchPath ? candidate.searchPath : candidate.relativePath;
 	return fuzzy ?
-		fuzzyContains(pathToMatch, filePatternToUse) :
+		abbrevContains(pathToMatch, filePatternToUse) :
 		glob.match(filePatternToUse, pathToMatch);
 }
 

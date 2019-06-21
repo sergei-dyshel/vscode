@@ -13,7 +13,7 @@ import { ITerminalGroupService, ITerminalService } from 'vs/workbench/contrib/te
 import { IContextKeyService } from 'vs/platform/contextkey/common/contextkey';
 import { PaneCompositeDescriptor } from 'vs/workbench/browser/panecomposite';
 import { matchesFuzzy } from 'vs/base/common/filters';
-import { fuzzyContains } from 'vs/base/common/strings';
+import { abbrevContains } from 'vs/base/common/abbrev';
 import { IKeybindingService } from 'vs/platform/keybinding/common/keybinding';
 import { Action2 } from 'vs/platform/actions/common/actions';
 import { ServicesAccessor } from 'vs/platform/instantiation/common/instantiation';
@@ -59,7 +59,7 @@ export class ViewQuickAccessProvider extends PickerQuickAccessProvider<IViewQuic
 			entry.highlights = { label: matchesFuzzy(filter, entry.label, true) ?? undefined };
 
 			// Return if we have a match on label or container
-			return entry.highlights.label || fuzzyContains(entry.containerLabel, filter);
+			return entry.highlights.label || abbrevContains(entry.containerLabel, filter);
 		});
 
 		// Map entries to container labels
