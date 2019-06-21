@@ -9,6 +9,7 @@ import { sep } from 'vs/base/common/path';
 import { isWindows, isLinux } from 'vs/base/common/platform';
 import { stripWildcards, equalsIgnoreCase } from 'vs/base/common/strings';
 import { CharCode } from 'vs/base/common/charCode';
+import { abbrevContains } from 'vs/base/common/abbrev';
 
 //#region Fuzzy scorer
 
@@ -64,6 +65,7 @@ export function scoreFuzzy(target: string, query: string, queryLower: string, fu
 function doScoreFuzzy(query: string, queryLower: string, queryLength: number, target: string, targetLower: string, targetLength: number): FuzzyScore {
 	const scores: number[] = [];
 	const matches: number[] = [];
+	if (!abbrevContains(target, query)) { return NO_SCORE; }
 
 	//
 	// Build Scorer Matrix:

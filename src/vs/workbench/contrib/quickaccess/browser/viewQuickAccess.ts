@@ -14,7 +14,7 @@ import { IPanelService, IPanelIdentifier } from 'vs/workbench/services/panel/com
 import { IContextKeyService } from 'vs/platform/contextkey/common/contextkey';
 import { ViewletDescriptor } from 'vs/workbench/browser/viewlet';
 import { matchesFuzzy } from 'vs/base/common/filters';
-import { fuzzyContains } from 'vs/base/common/strings';
+import { abbrevContains } from 'vs/base/common/abbrev';
 import { withNullAsUndefined } from 'vs/base/common/types';
 import { IKeybindingService } from 'vs/platform/keybinding/common/keybinding';
 import { Action2 } from 'vs/platform/actions/common/actions';
@@ -58,7 +58,7 @@ export class ViewQuickAccessProvider extends PickerQuickAccessProvider<IViewQuic
 			entry.highlights = { label: withNullAsUndefined(matchesFuzzy(filter, entry.label, true)) };
 
 			// Return if we have a match on label or container
-			return entry.highlights.label || fuzzyContains(entry.containerLabel, filter);
+			return entry.highlights.label || abbrevContains(entry.containerLabel, filter);
 		});
 
 		// Map entries to container labels
