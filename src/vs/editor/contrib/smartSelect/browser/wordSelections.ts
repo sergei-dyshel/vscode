@@ -12,7 +12,7 @@ import { SelectionRange, SelectionRangeProvider } from 'vs/editor/common/languag
 
 export class WordSelectionRangeProvider implements SelectionRangeProvider {
 
-	constructor(private readonly selectSubwords = true) { }
+	constructor(_selectSubwords = true) { }
 
 	provideSelectionRanges(model: ITextModel, positions: Position[]): SelectionRange[][] {
 		const result: SelectionRange[][] = [];
