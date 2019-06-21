@@ -10,6 +10,7 @@ import { hash } from './hash.js';
 import { sep } from './path.js';
 import { isLinux, isWindows } from './platform.js';
 import { equalsIgnoreCase, stripWildcards } from './strings.js';
+import { abbrevContains } from './abbrev.js';
 
 //#region Fuzzy scorer
 
@@ -52,6 +53,7 @@ export function scoreFuzzy(target: string, query: string, queryLower: string, al
 function doScoreFuzzy(query: string, queryLower: string, queryLength: number, target: string, targetLower: string, targetLength: number, allowNonContiguousMatches: boolean): FuzzyScore {
 	const scores: number[] = [];
 	const matches: number[] = [];
+	if (!abbrevContains(target, query)) { return NO_SCORE; }
 
 	//
 	// Build Scorer Matrix:

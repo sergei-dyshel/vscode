@@ -13,7 +13,7 @@ import { ITerminalGroupService, ITerminalService } from '../../terminal/browser/
 import { IContextKeyService } from '../../../../platform/contextkey/common/contextkey.js';
 import { PaneCompositeDescriptor } from '../../../browser/panecomposite.js';
 import { matchesFuzzy } from '../../../../base/common/filters.js';
-import { fuzzyContains } from '../../../../base/common/strings.js';
+import { abbrevContains } from '../../../../base/common/abbrev.js';
 import { IKeybindingService } from '../../../../platform/keybinding/common/keybinding.js';
 import { Action2 } from '../../../../platform/actions/common/actions.js';
 import { ServicesAccessor } from '../../../../platform/instantiation/common/instantiation.js';
@@ -59,7 +59,7 @@ export class ViewQuickAccessProvider extends PickerQuickAccessProvider<IViewQuic
 			entry.highlights = { label: matchesFuzzy(filter, entry.label, true) ?? undefined };
 
 			// Return if we have a match on label or container
-			return entry.highlights.label || fuzzyContains(entry.containerLabel, filter);
+			return entry.highlights.label || abbrevContains(entry.containerLabel, filter);
 		});
 
 		// Map entries to container labels
