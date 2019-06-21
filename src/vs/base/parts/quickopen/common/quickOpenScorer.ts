@@ -7,7 +7,7 @@ import { compareAnything } from 'vs/base/common/comparers';
 import { matchesPrefix, IMatch, matchesCamelCase, isUpper } from 'vs/base/common/filters';
 import { sep } from 'vs/base/common/path';
 import { isWindows, isLinux } from 'vs/base/common/platform';
-import { stripWildcards, equalsIgnoreCase } from 'vs/base/common/strings';
+import { stripWildcards, equalsIgnoreCase, abbrevContains } from 'vs/base/common/strings';
 import { CharCode } from 'vs/base/common/charCode';
 
 export type Score = [number /* score */, number[] /* match positions */];
@@ -63,6 +63,7 @@ export function score(target: string, query: string, queryLower: string, fuzzy: 
 function doScore(query: string, queryLower: string, queryLength: number, target: string, targetLower: string, targetLength: number): Score {
 	const scores: number[] = [];
 	const matches: number[] = [];
+	if (!abbrevContains(target, query)) { return NO_SCORE; }
 
 	//
 	// Build Scorer Matrix:

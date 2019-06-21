@@ -4,7 +4,6 @@
  *--------------------------------------------------------------------------------------------*/
 
 import { CharCode } from 'vs/base/common/charCode';
-import { LRUCache } from 'vs/base/common/map';
 import * as strings from 'vs/base/common/strings';
 
 export interface IFilter {
@@ -329,26 +328,19 @@ function nextWord(word: string, start: number): number {
 
 const fuzzyContiguousFilter = or(matchesPrefix, matchesCamelCase, matchesContiguousSubString);
 const fuzzySeparateFilter = or(matchesPrefix, matchesCamelCase, matchesSubString);
-const fuzzyRegExpCache = new LRUCache<string, RegExp>(10000); // bounded to 10000 elements
 
 export function matchesFuzzy(word: string, wordToMatchAgainst: string, enableSeparateSubstringMatching = false): IMatch[] | null {
 	if (typeof word !== 'string' || typeof wordToMatchAgainst !== 'string') {
 		return null; // return early for invalid input
 	}
 
-	// Form RegExp for wildcard matches
-	let regexp = fuzzyRegExpCache.get(word);
-	if (!regexp) {
-		regexp = new RegExp(strings.convertSimple2RegExpPattern(word), 'i');
-		fuzzyRegExpCache.set(word, regexp);
-	}
-
 	// RegExp Filter
-	const match = regexp.exec(wordToMatchAgainst);
+	const match = strings.abbrevMatch(word, wordToMatchAgainst);
 	if (match) {
 		return [{ start: match.index, end: match.index + match[0].length }];
 	}
 
+	return null;
 	// Default Filter
 	return enableSeparateSubstringMatching ? fuzzySeparateFilter(word, wordToMatchAgainst) : fuzzyContiguousFilter(word, wordToMatchAgainst);
 }
@@ -540,6 +532,10 @@ export function fuzzyScore(pattern: string, patternLow: string, patternPos: numb
 	// (in order) at all in word. If that isn't the case we
 	// stop because no match will be possible
 	if (!isPatternInWord(patternLow, patternPos, patternLen, wordLow, wordPos, wordLen)) {
+		return undefined;
+	}
+
+	if (!strings.abbrevMatch(pattern.substring(patternPos, patternLen), word.substring(wordPos, wordLen))) {
 		return undefined;
 	}
 
