@@ -585,7 +585,7 @@ function compareEntries(elementA: ListElement, elementB: ListElement, lookFor: s
 	if (!labelHighlightsA.length && labelHighlightsB.length) {
 		return 1;
 	}
-
+	return 0;
 	return compareAnything(elementA.saneLabel, elementB.saneLabel, lookFor);
 }
 
