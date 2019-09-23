@@ -68,8 +68,8 @@ export function isEqual(first: URI | undefined, second: URI | undefined, ignoreC
 	return p1 === p2 || ignoreCase && equalsIgnoreCase(p1 || '/', p2 || '/');
 }
 
-export function basename(resource: URI): string {
-	return paths.posix.basename(resource.path);
+export function basename(resource: URI, ext?: string): string {
+	return paths.posix.basename(resource.path, ext);
 }
 
 export function extname(resource: URI): string {
