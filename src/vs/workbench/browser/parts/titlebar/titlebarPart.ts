@@ -284,6 +284,10 @@ export class TitlebarPart extends Part implements ITitleService {
 		const activeFolderLong = editorFolderResource ? this.labelService.getUriLabel(editorFolderResource) : '';
 		const rootName = this.labelService.getWorkspaceLabel(workspace);
 		const rootPath = root ? this.labelService.getUriLabel(root) : '';
+		const rootBase = root ? resources.basename(root, '.code-workspace') : '';
+		const rootDir1 = root ? resources.basename(resources.dirname(root)): '';
+		const rootDir2 = root ? resources.basename(resources.dirname(resources.dirname(root))): '';
+		const rootDir3 = root ? resources.basename(resources.dirname(resources.dirname(resources.dirname(root)))): '';
 		const folderName = folder ? folder.name : '';
 		const folderPath = folder ? this.labelService.getUriLabel(folder.uri) : '';
 		const dirty = editor?.isDirty() && !editor.isSaving() ? TitlebarPart.TITLE_DIRTY : '';
@@ -301,6 +305,10 @@ export class TitlebarPart extends Part implements ITitleService {
 			activeFolderLong,
 			rootName,
 			rootPath,
+			rootBase,
+			rootDir1,
+			rootDir2,
+			rootDir3,
 			folderName,
 			folderPath,
 			dirty,
