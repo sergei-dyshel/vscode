@@ -456,7 +456,7 @@ export class HistoryService extends Disposable implements IHistoryService {
 
 	private doNavigate(location: IStackEntry, withSelection: boolean): Promise<IBaseEditor | undefined> {
 		const options: ITextEditorOptions = {
-			revealIfOpened: true // support to navigate across editor groups
+			revealIfOpened: false // support to navigate across editor groups
 		};
 
 		// Unless we navigate across editors, support selection and
