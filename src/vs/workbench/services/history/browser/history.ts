@@ -354,7 +354,7 @@ export class HistoryService extends Disposable implements IHistoryService {
 
 	private doNavigate(location: IStackEntry): Promise<IEditorPane | undefined> {
 		const options: ITextEditorOptions = {
-			revealIfOpened: true, // support to navigate across editor groups,
+			revealIfOpened: false, // support to navigate across editor groups,
 			selection: location.selection,
 			selectionRevealType: TextEditorSelectionRevealType.CenterIfOutsideViewport
 		};
