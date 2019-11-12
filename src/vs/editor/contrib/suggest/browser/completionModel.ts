@@ -222,6 +222,20 @@ export class CompletionModel {
 					}
 					item.score = match;
 				}
+				if (item.provider._debugDisplayName && item.provider._debugDisplayName.search('TabNine') !== -1) {
+					const sortText = item.completion.sortText;
+					if (sortText && sortText.length > 0) {
+						switch (sortText[0]) {
+							case '0':
+								item.score[0] += 100;
+								break;
+							case 'a':
+								break;
+							case 'z':
+								item.score[0] -= 100;
+						}
+					}
+				}
 			}
 
 			item.idx = i;
