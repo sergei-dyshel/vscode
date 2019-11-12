@@ -252,7 +252,14 @@ export class CompletionModel {
 		};
 	}
 
+	private static isTabNine(a: StrictCompletionItem) {
+		return a.completion.detail && a.completion.detail.search('TabNine') !== -1;
+	}
+
 	private static _compareCompletionItems(a: StrictCompletionItem, b: StrictCompletionItem): number {
+		if (!this.isTabNine(a) && this.isTabNine(b)) {
+			return -1;
+		}
 		if (a.score[0] > b.score[0]) {
 			return -1;
 		} else if (a.score[0] < b.score[0]) {
