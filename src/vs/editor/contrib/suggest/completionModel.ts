@@ -224,6 +224,20 @@ export class CompletionModel {
 					}
 					item.score = match;
 				}
+				if (item.provider._debugDisplayName && item.provider._debugDisplayName.search('TabNine') !== -1) {
+					const sortText = item.completion.sortText;
+					if (sortText && sortText.length > 0) {
+						switch (sortText[0]) {
+							case '0':
+								item.score[0] += 100;
+								break;
+							case 'a':
+								break;
+							case 'z':
+								item.score[0] -= 100;
+						}
+					}
+				}
 			}
 
 			item.idx = i;
@@ -242,14 +256,7 @@ export class CompletionModel {
 		this._refilterKind = Refilter.Nothing;
 	}
 
-	private static isTabNine(a: StrictCompletionItem) {
-		return a.completion.detail && a.completion.detail.search('TabNine') !== -1;
-	}
-
 	private static _compareCompletionItems(a: StrictCompletionItem, b: StrictCompletionItem): number {
-		if (!this.isTabNine(a) && this.isTabNine(b)) {
-			return -1;
-		}
 		if (a.score[0] > b.score[0]) {
 			return -1;
 		} else if (a.score[0] < b.score[0]) {
