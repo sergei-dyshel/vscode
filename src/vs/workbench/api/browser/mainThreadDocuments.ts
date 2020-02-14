@@ -26,7 +26,7 @@ export class BoundModelReferenceCollection {
 	private _length = 0;
 
 	constructor(
-		private readonly _maxAge: number = 1000 * 60 * 3,
+		private readonly _maxAge: number = 1000 * 10,
 		private readonly _maxLength: number = 1024 * 1024 * 80
 	) {
 		//
