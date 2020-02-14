@@ -80,7 +80,7 @@ class CallHierarchyController implements IEditorContribution {
 
 		const cts = new CancellationTokenSource();
 		const model = CallHierarchyModel.create(document, position, cts.token);
-		const direction = this._storageService.getNumber(CallHierarchyController._StorageDirection, StorageScope.GLOBAL, <number>CallHierarchyDirection.CallsFrom);
+		const direction = this._storageService.getNumber(CallHierarchyController._StorageDirection, StorageScope.GLOBAL, <number>CallHierarchyDirection.CallsTo);
 
 		this._showCallHierarchyWidget(position, direction, model, cts);
 	}
