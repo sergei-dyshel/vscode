@@ -17,10 +17,13 @@ export class WordSelectionRangeProvider implements SelectionRangeProvider {
 		for (const position of positions) {
 			const bucket: SelectionRange[] = [];
 			result.push(bucket);
-			this._addInWordRanges(bucket, model, position);
+			if (false) {
+				this._addInWordRanges(bucket, model, position);
+			}
 			this._addWordRanges(bucket, model, position);
-			this._addWhitespaceLine(bucket, model, position);
-			bucket.push({ range: model.getFullModelRange() });
+			if (false) {
+				this._addWhitespaceLine(bucket, model, position);
+			}
 		}
 		return result;
 	}

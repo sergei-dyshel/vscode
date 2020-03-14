@@ -288,11 +288,6 @@ export async function provideSelectionRanges(model: ITextModel, positions: Posit
 				if (rangeNoWhitespace.containsRange(prev) && !rangeNoWhitespace.equalsRange(prev) && cur.containsRange(rangeNoWhitespace) && !cur.equalsRange(rangeNoWhitespace)) {
 					oneRangesWithTrivia.push(rangeNoWhitespace);
 				}
-				// add line/block range
-				const rangeFull = new Range(prev.startLineNumber, 1, prev.endLineNumber, model.getLineMaxColumn(prev.endLineNumber));
-				if (rangeFull.containsRange(prev) && !rangeFull.equalsRange(rangeNoWhitespace) && cur.containsRange(rangeFull) && !cur.equalsRange(rangeFull)) {
-					oneRangesWithTrivia.push(rangeFull);
-				}
 			}
 			oneRangesWithTrivia.push(cur);
 		}
