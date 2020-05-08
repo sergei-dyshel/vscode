@@ -1,6 +1,18 @@
-# Fork
+This is personal fork of VScode, with some tweaks:
 
-This is my personal fork. See documentation for changes in [README.fork.md](README.fork.md).
+- Removed telemetry with scripts from [VScodium](https://vscodium.com/) project.
+- Ripgrep (used for "find in files") now respects configuration file
+  (`--no-config` is not passed).
+- QuickPick is not sorted alphabetically by default.
+- Better icon on MacOS.
+- Abbreviation (acronym) fuzzy matching.
+- More variables for `window.title` config variable.
+- Go forward/backward always reuses current editor group.
+- [TabNine](https://www.tabnine.com/) completion candidates are shown in the
+	end (can't be accomplished in the extension itself).
+- Dash (-) is word character in `shellscript` and `make` languages.
+
+-------------------------------------------------------------------------------
 
 # Visual Studio Code - Open Source ("Code - OSS")
 [![Feature Requests](https://img.shields.io/github/issues/microsoft/vscode/feature-request.svg)](https://github.com/microsoft/vscode/issues?q=is%3Aopen+is%3Aissue+label%3Afeature-request+sort%3Areactions-%2B1-desc)
