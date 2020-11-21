@@ -330,9 +330,6 @@ function nextWord(word: string, start: number): number {
 
 // Fuzzy
 
-const fuzzyContiguousFilter = or(matchesPrefix, matchesCamelCase, matchesContiguousSubString);
-const fuzzySeparateFilter = or(matchesPrefix, matchesCamelCase, matchesSubString);
-
 export function matchesFuzzy(word: string, wordToMatchAgainst: string, enableSeparateSubstringMatching = false): IMatch[] | null {
 	if (typeof word !== 'string' || typeof wordToMatchAgainst !== 'string') {
 		return null; // return early for invalid input
@@ -345,8 +342,6 @@ export function matchesFuzzy(word: string, wordToMatchAgainst: string, enableSep
 	}
 
 	return null;
-	// Default Filter
-	return enableSeparateSubstringMatching ? fuzzySeparateFilter(word, wordToMatchAgainst) : fuzzyContiguousFilter(word, wordToMatchAgainst);
 }
 
 /**
