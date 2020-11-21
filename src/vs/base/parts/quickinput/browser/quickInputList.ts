@@ -10,7 +10,6 @@ import { dispose, IDisposable } from 'vs/base/common/lifecycle';
 import { IQuickPickItem, IQuickPickItemButtonEvent, IQuickPickSeparator } from 'vs/base/parts/quickinput/common/quickInput';
 import { IMatch } from 'vs/base/common/filters';
 import { matchesFuzzyCodiconAware, parseCodicons } from 'vs/base/common/codicon';
-import { compareAnything } from 'vs/base/common/comparers';
 import { Emitter, Event } from 'vs/base/common/event';
 import { KeyCode } from 'vs/base/common/keyCodes';
 import { StandardKeyboardEvent } from 'vs/base/browser/keyboardEvent';
@@ -703,8 +702,6 @@ function compareEntries(elementA: ListElement, elementB: ListElement, lookFor: s
 		return 0;
 	}
 	return 0;
-
-	return compareAnything(elementA.saneLabel, elementB.saneLabel, lookFor);
 }
 
 class QuickInputAccessibilityProvider implements IListAccessibilityProvider<ListElement> {
