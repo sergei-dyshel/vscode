@@ -11,5 +11,5 @@ yarn gulp minify-vscode
 
 # MacOS-specific
 rm -rf ../VSCode-darwin
-yarn gulp vscode-darwin-min
-yarn gulp vscode-darwin
+yarn gulp vscode-darwin-x64-min
+yarn gulp vscode-darwin-x64
