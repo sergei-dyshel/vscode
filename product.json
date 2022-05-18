@@ -1,8 +1,8 @@
 {
-	"nameShort": "Code - OSS",
-	"nameLong": "Code - OSS",
+	"nameShort": "Code",
+	"nameLong": "Visual Studio Code",
 	"applicationName": "code-oss",
-	"dataFolderName": ".vscode-oss",
+	"dataFolderName": ".vscode",
 	"win32MutexName": "vscodeoss",
 	"licenseName": "MIT",
 	"licenseUrl": "https://github.com/microsoft/vscode/blob/main/LICENSE.txt",
@@ -80,5 +80,273 @@
 				"publisherDisplayName": "Microsoft"
 			}
 		}
-	]
+	],
+	"extensionsGallery": {
+    		"serviceUrl": "https://marketplace.visualstudio.com/_apis/public/gallery",
+    		"cacheUrl": "https://vscode.blob.core.windows.net/gallery/index",
+    		"itemUrl": "https://marketplace.visualstudio.com/items"
+	},
+	"enableTelemetry": false,
+	"extensionEnabledApiProposals": {
+		"ms-vscode.vscode-selfhost-test-provider": ["testObserver"],
+		"VisualStudioExptTeam.vscodeintellicode-completions": [
+			"inlineCompletions",
+			"inlineCompletionsNew",
+			"inlineCompletionsAdditions"
+		],
+		"ms-vsliveshare.vsliveshare": [
+			"contribMenuBarHome",
+			"diffCommand",
+			"documentFiltersExclusive",
+			"fileSearchProvider",
+			"findTextInFiles",
+			"notebookCellExecutionState",
+			"notebookContentProvider",
+			"notebookEditor",
+			"notebookEditorEdit",
+			"notebookLiveShare",
+			"terminalDimensions",
+			"terminalDataWriteEvent",
+			"textDocumentNotebook",
+			"textSearchProvider"
+		],
+		"ms-vscode.js-debug": [
+			"portsAttributes",
+			"findTextInFiles",
+			"workspaceTrust",
+			"resolvers"
+		],
+		"ms-toolsai.vscode-ai-remote": ["resolvers", "notebookEditor"],
+		"ms-python.python": [
+			"quickPickSortByLabel",
+			"testObserver",
+			"notebookEditor"
+		],
+		"ms-dotnettools.dotnet-interactive-vscode": [
+			"notebookContentProvider",
+			"notebookCellExecutionState",
+			"notebookControllerKind",
+			"notebookDebugOptions",
+			"notebookDeprecated",
+			"notebookEditor",
+			"notebookEditorDecorationType",
+			"notebookEditorEdit",
+			"notebookLiveShare",
+			"notebookMessaging",
+			"notebookMime",
+			"textDocumentNotebook"
+		],
+		"GitHub.codespaces": [
+			"contribMenuBarHome",
+			"contribRemoteHelp",
+			"contribViewsRemote",
+			"notebookEditor",
+			"resolvers",
+			"terminalDataWriteEvent",
+			"treeViewReveal"
+		],
+		"ms-vscode.azure-repos": [
+			"extensionRuntime",
+			"fileSearchProvider",
+			"resolvers",
+			"textSearchProvider"
+		],
+		"ms-vscode.remote-repositories": [
+			"contribRemoteHelp",
+			"contribMenuBarHome",
+			"contribViewsRemote",
+			"contribViewsWelcome",
+			"documentFiltersExclusive",
+			"extensionRuntime",
+			"fileSearchProvider",
+			"quickPickSortByLabel",
+			"workspaceTrust",
+			"scmSelectedProvider",
+			"scmValidation",
+			"textSearchProvider",
+			"timeline",
+			"notebookEditor"
+		],
+		"tanhakabir.rest-book": ["notebookEditor"],
+		"ms-vscode-remote.remote-wsl": [
+			"resolvers",
+			"contribViewsRemote",
+			"telemetry"
+		],
+		"ms-vscode-remote.remote-ssh": [
+			"resolvers",
+			"terminalDataWriteEvent",
+			"contribViewsRemote",
+			"telemetry"
+		],
+		"ms-vscode-remote.remote-containers": [
+			"resolvers",
+			"workspaceTrust",
+			"terminalDimensions",
+			"contribViewsRemote"
+		],
+		"ms-vscode.js-debug-nightly": [
+			"portsAttributes",
+			"findTextInFiles",
+			"workspaceTrust",
+			"resolvers"
+		],
+		"ms-vscode.lsif-browser": ["documentFiltersExclusive"],
+		"GitHub.vscode-pull-request-github": [
+			"tokenInformation",
+			"commentsResolvedState"
+		],
+		"GitHub.copilot": [
+			"inlineCompletions",
+			"inlineCompletionsNew",
+			"inlineCompletionsAdditions",
+			"textDocumentNotebook"
+		],
+		"GitHub.copilot-nightly": [
+			"inlineCompletions",
+			"inlineCompletionsNew",
+			"inlineCompletionsAdditions",
+			"textDocumentNotebook"
+		],
+		"GitHub.remotehub": [
+			"contribRemoteHelp",
+			"contribMenuBarHome",
+			"contribViewsRemote",
+			"contribViewsWelcome",
+			"documentFiltersExclusive",
+			"extensionRuntime",
+			"fileSearchProvider",
+			"quickPickSortByLabel",
+			"workspaceTrust",
+			"resolvers",
+			"scmSelectedProvider",
+			"scmValidation",
+			"textSearchProvider",
+			"timeline",
+			"notebookEditor"
+		],
+		"GitHub.remotehub-insiders": [
+			"contribRemoteHelp",
+			"contribMenuBarHome",
+			"contribViewsRemote",
+			"contribViewsWelcome",
+			"documentFiltersExclusive",
+			"extensionRuntime",
+			"fileSearchProvider",
+			"quickPickSortByLabel",
+			"workspaceTrust",
+			"resolvers",
+			"scmSelectedProvider",
+			"scmValidation",
+			"textSearchProvider",
+			"timeline",
+			"notebookEditor"
+		],
+		"ms-python.gather": ["notebookEditor", "notebookCellExecutionState"],
+		"ms-python.vscode-pylance": [
+			"notebookEditor",
+			"notebookCellExecutionState"
+		],
+		"ms-toolsai.jupyter": [
+			"notebookControllerKind",
+			"notebookDebugOptions",
+			"notebookDeprecated",
+			"notebookEditor",
+			"notebookEditorDecorationType",
+			"notebookEditorEdit",
+			"notebookMessaging",
+			"notebookMime",
+			"notebookCellExecutionState",
+			"portsAttributes",
+			"quickPickSortByLabel"
+		],
+		"ms-toolsai.vscode-jupyter-powertoys": [
+			"notebookControllerKind",
+			"notebookDebugOptions",
+			"notebookDeprecated",
+			"notebookEditor",
+			"notebookEditorDecorationType",
+			"notebookEditorEdit",
+			"notebookMessaging",
+			"notebookMime",
+			"notebookCellExecutionState"
+		],
+		"dbaeumer.vscode-eslint": ["notebookEditor", "notebookCellExecutionState"],
+		"ms-vscode.azure-sphere-tools-ui": ["resolvers"],
+		"ms-azuretools.vscode-azureappservice": ["terminalDataWriteEvent"],
+		"ms-vscode.anycode": ["extensionsAny"]
+	},
+	"extensionAllowedBadgeProviders": [
+		"api.bintray.com",
+		"api.travis-ci.com",
+		"api.travis-ci.org",
+		"app.fossa.io",
+		"badge.buildkite.com",
+		"badge.fury.io",
+		"badge.waffle.io",
+		"badgen.net",
+		"badges.frapsoft.com",
+		"badges.gitter.im",
+		"badges.greenkeeper.io",
+		"cdn.travis-ci.com",
+		"cdn.travis-ci.org",
+		"ci.appveyor.com",
+		"circleci.com",
+		"cla.opensource.microsoft.com",
+		"codacy.com",
+		"codeclimate.com",
+		"codecov.io",
+		"coveralls.io",
+		"david-dm.org",
+		"deepscan.io",
+		"dev.azure.com",
+		"docs.rs",
+		"flat.badgen.net",
+		"gemnasium.com",
+		"githost.io",
+		"gitlab.com",
+		"godoc.org",
+		"goreportcard.com",
+		"img.shields.io",
+		"isitmaintained.com",
+		"marketplace.visualstudio.com",
+		"nodesecurity.io",
+		"opencollective.com",
+		"snyk.io",
+		"travis-ci.com",
+		"travis-ci.org",
+		"visualstudio.com",
+		"vsmarketplacebadge.apphb.com",
+		"www.bithound.io",
+		"www.versioneye.com"
+	],
+	"extensionSyncedKeys": {
+		"ritwickdey.liveserver": ["liveServer.setup.version"]
+	},
+	"quality": "stable",
+	"checksumFailMoreInfoUrl": "https://go.microsoft.com/fwlink/?LinkId=828886",
+	"linkProtectionTrustedDomains": [
+		"https://*.visualstudio.com",
+		"https://*.microsoft.com",
+		"https://aka.ms",
+		"https://*.gallerycdn.vsassets.io",
+		"https://github.com/microsoft/",
+		"https://github.com/MicrosoftDocs/",
+		"https://login.microsoftonline.com"
+	],
+	"documentationUrl": "https://go.microsoft.com/fwlink/?LinkID=533484#vscode",
+	"configurationSync.store": {
+		"url": "https://vscode-sync.trafficmanager.net/",
+		"stableUrl": "https://vscode-sync.trafficmanager.net/",
+		"insidersUrl": "https://vscode-sync-insiders.trafficmanager.net/",
+		"canSwitch": false,
+		"authenticationProviders": {
+			"microsoft": {
+				"scopes": ["openid", "profile", "email", "offline_access"]
+			},
+			"github": {
+				"scopes": ["user:email"]
+			}
+		}
+	}
 }
