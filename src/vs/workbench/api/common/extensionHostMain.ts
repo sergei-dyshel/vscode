@@ -181,7 +181,7 @@ export class ExtensionHostMain {
 		this._extensionService.initialize();
 
 		// install error handler that is extension-aware
-		instaService.invokeFunction(ErrorHandler.installFullHandler);
+		// instaService.invokeFunction(ErrorHandler.installFullHandler);
 	}
 
 	async asBrowserUri(uri: URI): Promise<URI> {
